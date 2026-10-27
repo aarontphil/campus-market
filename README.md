@@ -107,12 +107,15 @@ define('DB_PASS', '');
 ```
 
 ### 4. Running the Application
-If using PHP built-in server from `c:\Users\aaron\web-prgramming`:
+From the parent `web-prgramming` directory:
 ```bash
 php -S localhost:8000
 ```
 Then navigate in your browser to:
-[http://localhost:8000/campus-marketplace/](http://localhost:8000/campus-marketplace/)
+- **Master Navigation Hub (All Pages):** [http://localhost:8000/campus-marketplace/hub.php](http://localhost:8000/campus-marketplace/hub.php)
+- **Marketplace Home:** [http://localhost:8000/campus-marketplace/](http://localhost:8000/campus-marketplace/)
+- **Catalog Browse:** [http://localhost:8000/campus-marketplace/browse.php](http://localhost:8000/campus-marketplace/browse.php)
+- **Student Login:** [http://localhost:8000/campus-marketplace/login.php](http://localhost:8000/campus-marketplace/login.php)
 
 *(Or copy `campus-marketplace` into your XAMPP `htdocs/` folder and open `http://localhost/campus-marketplace/`)*
 
@@ -120,12 +123,13 @@ Then navigate in your browser to:
 
 ## 🔑 Demo Accounts (Pre-Seeded)
 
-All demo accounts have password: `Password123`
+**Password for all demo accounts:** `Password123`
 
-| Name | College Email | Student ID |
-| :--- | :--- | :--- |
-| **Aarav Sharma** | `aarav.sharma@campus.edu` | `STU2024-001` |
-| **Priya Patel** | `priya.patel@campus.edu` | `STU2024-002` |
-| **Rohan Gupta** | `rohan.gupta@campus.edu` | `STU2024-003` |
-| **Sneha Reddy** | `sneha.reddy@campus.edu` | `STU2024-004` |
-| **Vikram Singh** | `vikram.singh@campus.edu` | `STU2024-005` |
+| Name | College Email | Student ID | Primary Role & Seed Data |
+| :--- | :--- | :--- | :--- |
+| **Arjun Nair** | `arjun.nair@campus.edu` | `STU2024001` | **Primary Seller**: Textbooks (DBMS, Casio FX-991EX, Yonex Racquet, USB-C Hub) |
+| **Joel Mathew** | `joel.mathew@campus.edu` | `STU2024002` | **Seller & Negotiator**: JBL Headphones, Study Table, Electric Kettle, Desk Lamp |
+| **Meera Krishnan** | `meera.krishnan@campus.edu` | `STU2024003` | **Buyer / Seller**: Drawing Kit, Wireless Mouse, Formal Shirt, DSA Textbook |
+
+> **Tip:** You can use the **1-Click Quick Demo Login** buttons on the login page or the **"Switch Persona"** menu in the top navigation bar to test interactions between buyers and sellers instantly.
+
