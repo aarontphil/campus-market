@@ -35,6 +35,16 @@ function validateCsrf(): bool {
 }
 
 /**
+ * Validate an explicit CSRF token.
+ */
+function validateCsrfToken(?string $token = null): bool {
+    if ($token === null) {
+        $token = $_POST['csrf_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    }
+    return is_string($token) && hash_equals(csrfToken(), $token);
+}
+
+/**
  * Abort with 403 if the CSRF token is invalid.
  */
 function requireCsrf(): void {
