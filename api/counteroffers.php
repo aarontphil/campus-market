@@ -84,13 +84,13 @@ if (!$isSeller && !$isBuyer) {
 $db->beginTransaction();
 try {
     // 1. Mark parent offer as Countered
-    $updateStmt = $db->prepare('UPDATE offers SET status = "Countered", updated_at = NOW() WHERE id = ?');
+    $updateStmt = $db->prepare('UPDATE offers SET status = "Countered", updated_at = CURRENT_TIMESTAMP WHERE id = ?');
     $updateStmt->execute([$parentOfferId]);
 
     // 2. Insert new offer with parent_offer_id link
     $insertStmt = $db->prepare(
         'INSERT INTO offers (product_id, buyer_id, seller_id, parent_offer_id, offered_price, status, message, created_at, updated_at)
-         VALUES (?, ?, ?, ?, ?, "Pending", ?, NOW(), NOW())'
+         VALUES (?, ?, ?, ?, ?, "Pending", ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)'
     );
     $insertStmt->execute([
         $parentOffer['product_id'],

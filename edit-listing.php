@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         $stmt = $db->prepare(
-            'UPDATE products SET title=?, description=?, price=?, product_data=?, image_path=?, status=?, archived_at=?, updated_at=NOW()
+            'UPDATE products SET title=?, description=?, price=?, product_data=?, image_path=?, status=?, archived_at=?, updated_at=CURRENT_TIMESTAMP
              WHERE id=? AND seller_id=?'
         );
         $stmt->execute([

@@ -24,6 +24,13 @@ function formatPrice($price): string {
 }
 
 /**
+ * Format currency alias for formatPrice.
+ */
+function formatCurrency($price): string {
+    return formatPrice($price);
+}
+
+/**
  * Return a human-friendly time-ago string.
  */
 function timeAgo(string $datetime): string {

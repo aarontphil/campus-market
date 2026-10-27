@@ -76,7 +76,7 @@ if ($action === 'create') {
     try {
         $stmt = $db->prepare(
             'INSERT INTO offers (product_id, buyer_id, seller_id, offered_price, status, message, created_at, updated_at)
-             VALUES (?, ?, ?, ?, "Pending", ?, NOW(), NOW())'
+             VALUES (?, ?, ?, ?, "Pending", ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)'
         );
         $stmt->execute([$productId, $uid, $product['seller_id'], $offeredPrice, $message]);
         $offerId = (int) $db->lastInsertId();
@@ -140,17 +140,17 @@ if ($action === 'update_status') {
 
     $db->beginTransaction();
     try {
-        $updateStmt = $db->prepare('UPDATE offers SET status = ?, updated_at = NOW() WHERE id = ?');
+        $updateStmt = $db->prepare('UPDATE offers SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?');
         $updateStmt->execute([$targetStatus, $offerId]);
 
         // If offer is accepted, mark product as Reserved (or Sold)
         if ($targetStatus === 'Accepted') {
-            $prodUpdate = $db->prepare('UPDATE products SET status = "Reserved", updated_at = NOW() WHERE id = ?');
+            $prodUpdate = $db->prepare('UPDATE products SET status = "Reserved", updated_at = CURRENT_TIMESTAMP WHERE id = ?');
             $prodUpdate->execute([$offer['product_id']]);
 
             // Reject other pending offers for this product
             $rejectOthers = $db->prepare(
-                'UPDATE offers SET status = "Rejected", updated_at = NOW()
+                'UPDATE offers SET status = "Rejected", updated_at = CURRENT_TIMESTAMP
                  WHERE product_id = ? AND id != ? AND status = "Pending"'
             );
             $rejectOthers->execute([$offer['product_id'], $offerId]);
