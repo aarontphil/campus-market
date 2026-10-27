@@ -1,0 +1,8 @@
+# Uploaded files
+uploads/products/*
+!uploads/products/.gitkeep
+
+# Temporary or system files
+.DS_Store
+Thumbs.db
+*.log
